@@ -1,0 +1,175 @@
+<admintpl file="header" />
+<div class="wrap J_check_wrap">
+<div class="table-actions">
+				
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" onclick="view_images('{$photo_id}','add')">添加</button>
+				<button class="btn btn-primary btn-small J_articles_move" type="button">批量删除</button>
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="button" onclick="javascript:history.go(-1);">返回图片列表</button>
+			</div>
+<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						<th width="50">锚点名称</th>
+						<th width="70">锚点X</th>
+						<th width="70">锚点Y</th>
+						<th width="40">锚点说明</th>
+						<th width="20">添加时间</th>
+						<th width="20">添加人</th>
+						<th width="70">操作</th>
+					</tr>
+				</thead>
+				
+				<foreach name="list" item="vo">
+				<tr>
+					<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="ids[]" value="{$vo.id}" title="ID:{$vo.id}"></td>
+					<td>{$vo.metaname}</td>
+					<td>{$vo.posx}</td>
+					<td>{$vo.posy}</td>
+					<td><textarea rows="2" cols="10" id="content_{$vo.id}" onchange="save_content('{$vo.id}')">{$vo.description}</textarea></td>
+					<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+					<td>{$vo.adduser}</td>
+					<td>
+						<a onclick="view_images('{$vo.id}','edit')" class="btn">修改</a>  
+						<a onclick="add_meta_images('{$vo.id}','{$class_id}','{$info_id}')" class="btn">二级页面</a>	<a href="javascript:;" style="margin: 5px 0;" onclick="javascript:flashupload('albums_images', '图片上传','photos',change_images2,'20,gif|jpg|jpeg|png|bmp,0,{$class_id},{$vo.id},{$info_id},{$pro_info.logoid},{$pro_info.seriesid},{$pro_info.years}','','','')" class="btn">图片上传 </a> 
+				</tr>
+				</foreach>
+				
+			</table>
+			<div class="table-actions">
+				
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" onclick="view_images('{$photo_id}','add')">添加</button>
+				<button class="btn btn-primary btn-small J_articles_move" type="button">批量删除</button>
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="button" onclick="javascript:history.go(-1);">返回图片列表</button>
+			</div>
+</div>
+<script src="__ROOT__/statics/js/common.js"></script>
+<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+<script>
+	function save_content(id){
+		if(id){
+			var content_value = $('#content_'+id).val();
+			$.ajax({
+				url:'/index.php?g=Products&c=Index&a=contentSave',
+				type:'post',
+				data:{"photo_id":id, "content":content_value},
+				success:function(msg){
+					var content = '';
+					if(msg == 1){
+						content = '图片说明保存成功！';
+					}else{
+						content = '图片说明保存失败！';
+					}
+					Wind.use("artDialog",function(){
+						art.dialog({
+							title: '提示信息',
+							fixed: true,
+							id:"image_priviews",
+							lock: true,
+							background:"#CCCCCC",
+							opacity:0,
+							content: content,
+							cancelVal: '确定',
+							cancel: true
+						});
+					});
+				}
+			});
+		
+		}else{
+			return false;
+		}
+	
+	}
+
+	function view_images(id,type){
+		Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+			//批量移动
+			var $this = $(this);
+			var title = (type=='add') ? '添加锚点' : '修改锚点';
+			var param = (type=='add') ? '&photo_id='+ id : '&meta_id='+ id;
+			
+			art.dialog.open("__ROOT__/index.php?g=Products&m=Index&a=metaEdit&type="+type+param, {
+						title : title,
+						id: "meta_opt",
+						width : "600px",
+						height : "100%",
+						close:function(){
+							window.location.reload();
+						}
+			});
+		});
+	}
+	function add_meta_images(meta_id,class_id,info_id){
+		Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+			//批量移动
+			var $this = $(this);
+			art.dialog.open("__ROOT__/index.php?g=Products&m=Index&a=imgView&meta_id="
+							+ meta_id + '&info_id=' + info_id + '&class_id=' + class_id, {
+						title : "查看图片",
+						id : "add_meta_images",
+						width : "60%"
+			});
+		});
+	}
+	$(function() {
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				$('.J_articles_move').click(
+						function(e) {
+							var str = 0;
+							var id = tag = '';
+							$("input[name='ids[]']").each(function() {
+								if ($(this).attr('checked')) {
+									str = 1;
+									id += tag + $(this).val();
+									tag = ',';
+								}
+							});
+							if (str == 0) {
+								art.dialog.through({
+									id : 'error',
+									icon : 'error',
+									content : '您没有勾选信息，无法进行操作！',
+									cancelVal : '关闭',
+									cancel : true
+								});
+								return false;
+							}
+							var $this = $(this);
+							$.ajax({
+								url:'/index.php?g=Products&c=Index&a=metaDel',
+								type:'get',
+								data:{"ids":id},
+								success:function(msg){
+									var content = '';
+									if(msg == 1){
+										content = '锚点删除成功！';
+									}else{
+										content = '锚点删除失败！';
+									}
+
+									Wind.use("artDialog",function(){
+										art.dialog({
+											title: '提示信息',
+											fixed: true,
+											id:"del_meta",
+											lock: true,
+											background:"#CCCCCC",
+											opacity:0,
+											content: content,
+											cancelVal: '确定',
+											cancel: function(){
+												window.location.reload();
+											}
+										});
+									});
+								}
+							});
+						});
+			});
+		});
+
+</script>
+</body>
+</html>

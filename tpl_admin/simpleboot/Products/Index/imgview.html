@@ -1,0 +1,83 @@
+<admintpl file="header" />
+<div class="wrap J_check_wrap">
+<form class="J_ajaxForm" method="post" action="">
+<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x"></label></th>
+						<th width="15">序号</th>
+						<th width="50">所属分类</th>
+						<th width="70">图片地址</th>
+						<th width="70">图片说明</th>
+						<th width="40">添加时间</th>
+						<th width="20">发布人</th>
+						<th width="70">操作</th>
+					</tr>
+				</thead>
+				
+				<foreach name="list" item="vo">
+				<tr>
+					<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="ids[]" value="{$vo.id}" title="ID:{$vo.id}"></td>
+					<td>{$vo.id}</td>
+					<td>{$vo.classname}</td>
+					<td><a href="{$vo.imgurl}" title="点击查看" target="_blank">{$vo.imgurl}</a></td>
+					<td><textarea rows="2" cols="10" id="content_{$vo.id}" onchange="save_content('{$vo.id}')">{$vo.description}</textarea></td>
+					<td>{$vo.add_time}</td>
+					<td>{$vo.adduser}</td>
+					<td>
+						<a href="{:U('Index/metaAdd',array('photo_id'=>$vo['id'], 'info_id'=>$info_id, 'class_id'=>$vo['classid']))}">添加坐标</a> | 
+						<a href="{:U('Index/imgDel',array('pic_id'=>$vo['id']))}" class="J_ajax_del">删除</a></td>
+				</tr>
+				</foreach>
+				
+			</table>
+			<div class="table-actions">
+				
+				<button class="btn btn-primary btn-small J_ajax_submit_btn" type="submit" data-action="{:U('Index/imgDel')}" data-subcheck="true" data-msg="你确定删除吗？">删除</button>
+				
+			</div>
+			<div class="pagination">{$Page}</div>
+			</form></div>
+			<script src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+			<script>
+				function save_content(id){
+					if(id){
+						var content_value = $('#content_'+id).val();
+						$.ajax({
+							url:'/index.php?g=Products&c=Index&a=contentSave',
+							type:'post',
+							data:{"photo_id":id, "content":content_value},
+							success:function(msg){
+								var content = '';
+								if(msg == 1){
+									content = '图片说明保存成功！';
+								}else{
+									content = '图片说明保存失败！';
+								}
+								Wind.use("artDialog",function(){
+									art.dialog({
+										title: '提示信息',
+										fixed: true,
+										id:"image_priviews",
+										lock: true,
+										background:"#CCCCCC",
+										opacity:0,
+										content: content,
+										cancelVal: '确定',
+										cancel: true
+										
+									});
+								});
+							}
+						});
+					
+					}else{
+						return false;
+					}
+				
+				}
+			
+			</script>
+</body>
+</html>

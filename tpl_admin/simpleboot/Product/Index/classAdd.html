@@ -1,0 +1,66 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+	        <li class="active"><a href="#A" data-toggle="tab">基本属性</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" action="{:u('Index/classAdd')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+
+		          <div class="tab-pane active" id="A">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="140">上级分类:</td>
+									<td><select name="parentid" class="normal_select">
+											<option value="0">作为一级分类</option>
+											{$terms_tree}
+									</select></td>
+								</tr>
+								<tr>
+									<td>分类名称:</td>
+									<td><input type="text" class="input" name="classname" value=""><span class="must_red">*</span></td>
+								</tr>
+
+						        <tr>
+						          <td>图片:</td>
+						          <td>
+						          	<div><input type='hidden' name='image' id='class' value=''>
+									<a href='javascript:void(0);' onclick="flashupload('class_images', '附件上传','class',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+									<img src='/statics/images/icon/upload-pic.png' id='class_preview' width='135' height='113' style='cursor:hand' /></a>
+						            <input type="button"  class="btn" onclick="$('#class_preview').attr('src','/statics/images/icon/upload-pic.png');$('#class').val('');return false;" value="取消图片">
+						            </div>
+									</td>
+						        </tr>
+
+								<tr>
+									<td>分类描述:</td>
+									<td><textarea name="description" rows="5" cols="57"></textarea><span class="must_red">*</span></td>
+								</tr>
+								<tr>
+									<td>是否启用:</td>
+									<td><select name="disabled">
+											<foreach name="disabled" item="vo">
+									        	<option value="{$key}">{$vo}</option>
+											</foreach>
+									</select></td>
+								</tr>
+							</tbody>
+						</table>
+		          </div>
+
+ 				</div>
+
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit J_ajax_submit_btn" type="submit">提交</button>
+		      		<a class="btn" href="{:U('Index/classList')}">返回</a>
+		     </div>
+		</form>
+	</div>
+	<script type="text/javascript" src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+
+</body>
+</html>

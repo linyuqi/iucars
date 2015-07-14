@@ -1,0 +1,192 @@
+[ 2015-07-08T10:33:35+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+SQL: INSERT INTO `iuc_terms` (`parent`,`name`,`description`,`taxonomy`,`seo_title`,`seo_keywords`,`seo_description`,`list_tpl`,`one_tpl`) VALUES ('1','我','的','article','','','','list','article') [ RunTime:0.0000s ]
+SQL: SELECT * FROM `iuc_terms` WHERE ( term_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `iuc_terms` SET `path`='0-1-3' WHERE ( term_id=3 ) [ RunTime:0.0010s ]
+
+[ 2015-07-08T11:06:58+08:00 ] 127.0.0.1 /index.php?g=&m=AdminPost&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_posts` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_term_relationships` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:07:03+08:00 ] 127.0.0.1 /index.php?g=&m=AdminPost&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_posts` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_term_relationships` [ RunTime:0.0020s ]
+SQL: INSERT INTO `iuc_posts` (`post_modified`,`post_status`,`istop`,`recommended`,`post_title`,`post_keywords`,`post_source`,`post_excerpt`,`post_content`,`post_date`,`post_author`,`smeta`) VALUES ('2015-07-08 11:06:25','1','0','0','sadd','sasdas','dasd','sad','<p>dasd<br/></p>','2015-07-08 11:07:03','1','{\"thumb\":\"\"}') [ RunTime:0.0000s ]
+SQL: INSERT INTO `iuc_term_relationships` (`term_id`,`object_id`) VALUES ('3','1') [ RunTime:0.0000s ]
+
+[ 2015-07-08T11:07:29+08:00 ] 127.0.0.1 /index.php?g=&m=AdminPost&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_posts` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_term_relationships` [ RunTime:0.0020s ]
+SQL: DELETE FROM `iuc_term_relationships` WHERE `object_id` = 1 AND `term_id` NOT IN ('3') [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `iuc_term_relationships` WHERE `object_id` = 1 AND `term_id` = '3' LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `iuc_term_relationships` SET `status`='1' WHERE `object_id` = 1 AND `term_id` = '3' [ RunTime:0.0000s ]
+SQL: UPDATE `iuc_posts` SET `post_modified`='2015-07-08 11:06:25',`post_status`='1',`istop`='0',`recommended`='0',`post_title`='sadd',`post_keywords`='sasdas',`post_source`='dasd',`post_excerpt`='sad',`post_content`='<p>dasd<br/></p>',`smeta`='{\"thumb\":\"\",\"photo\":[{\"url\":\"559c93e73be9f.png\",\"alt\":\"xxzX\"}]}' WHERE `id` = '1' [ RunTime:0.0010s ]
+
+[ 2015-07-08T11:32:38+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:32:39+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:32:40+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:32:40+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:32:41+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:32:41+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T11:35:40+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0010s ]
+
+[ 2015-07-08T11:35:40+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T15:25:38+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T15:25:38+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T15:25:39+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0010s ]
+
+[ 2015-07-08T15:25:39+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0020s ]
+
+[ 2015-07-08T15:25:39+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0010s ]
+
+[ 2015-07-08T15:25:39+08:00 ] 192.168.0.147 /index.php?g=&m=AdminTerm&a=add_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_terms` [ RunTime:0.0010s ]
+
+[ 2015-07-08T15:45:50+08:00 ] 127.0.0.1 /javascript
+ERR: 无法加载控制器:Javascript
+
+[ 2015-07-08T17:50:42+08:00 ] 127.0.0.1 /index.php/Products/Index
+ERR: 无法加载控制器:Products
+
+[ 2015-07-08T19:25:05+08:00 ] 192.168.0.147 /%7Bif%20$data.image%7D/data/upload/559d07f5463ed.jpg%7Belse%7D/statics/images/icon/upload-pic.png%7B/if%7D
+ERR: 无法加载控制器:{if $data.image}
+
+[ 2015-07-08T19:25:05+08:00 ] 192.168.0.147 /%7Bif%20$data.image%7D/data/upload/559d07f5463ed.jpg%7Belse%7D/statics/images/icon/upload-pic.png%7B/if%7D
+ERR: 无法加载控制器:{if $data.image}
+
+[ 2015-07-08T19:25:11+08:00 ] 192.168.0.147 /%7Bif%20$data.image%7D/data/upload/559d07f5463ed.jpg%7Belse%7D/statics/images/icon/upload-pic.png%7B/if%7D
+ERR: 无法加载控制器:{if $data.image}
+

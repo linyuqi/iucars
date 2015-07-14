@@ -1,0 +1,236 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Index/desList')}" target="_self">所有说明书</a></li>
+			<li <if condition="$lsttype eq 'years'"> class="active"</if>><a href="{:U('Index/desAdd',array('lsttype'=>'years'))}" target="_self">按年款添加</a></li>
+			<li <if condition="$lsttype eq 'model'"> class="active"</if>><a href="{:U('Index/desAdd',array('lsttype'=>'model'))}" target="_self">按车型添加</a></li>
+			
+		</ul>
+		<form class="well J_ajaxForm" method="post" action="{:U('Index/desAdd')}" id="form1">
+			<div class="search_type cc mb10">
+				<div class="mb10">
+					<span class="mr20">
+					品牌：<select id="logo" name="search[logo]" onchange="selectLogoOnChange('logo','series','model','{$lsttype}')" style="width:200px;">
+								<option value="--请选择品牌--">--请选择品牌--</option>
+							</select>
+							车系：<select id="series" name="search[series]" onchange="selectSeriesOnChange('series','model','{$lsttype}')">
+								<option value="--请选择车系--">--请选择车系--</option>
+							</select>
+							
+							<if condition="$lsttype eq 'years'">
+								年款：<select id="model" name="search[model]" class="easyui-combobox"></select>
+							<else />
+								车型：<select id="model" name="search[model]" class="easyui-combobox"></select>
+							<if condition="$info_id eq ''">
+								复制车型：<select id="copy_model" name="search[copy_model]" class="easyui-combobox"><option value="-1">--请选择复制车型--</option></select>
+							</if>
+							</if>
+							&nbsp; &nbsp;
+						<input class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="submit" value="添加" id="searchid"/>
+						<input name="search[act]" id="act" value="add" type="hidden">
+						<input name="search[lsttype]" id="lsttype" value="{$lsttype}" type="hidden">
+						<input class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="button" onclick="javascript:window.location.href='{:U('Index/desAdd', array('info_id'=>$info_id, 'step'=>1, 'act'=>'edit', 'lsttype'=>$lsttype))}';" value="修改"/>
+					</span>
+				</div>
+			</div>
+		</form>
+		
+		<if condition="$step eq 2">
+		<form class="well J_ajaxForm" action="{:U('Index/listorders')}" method="post">
+			<div class="table-actions">
+				<button class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="submit">排序</button>
+			</div>
+			<table class="table table-hover table-bordered table-list" id="menus-table">
+				<thead>
+					<tr>
+						<th width="80">排序</th>
+						<th width="50">ID</th>
+						<th width="200">分类名称</th>
+						<th width="200">管理操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{$categorys}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="80">排序</th>
+						<th width="50">ID</th>
+						<th>分类名称</th>
+						<th width="150">管理操作</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="submit">排序</button>
+			</div>
+		</form>
+		<elseif condition="$step eq 1"/>
+		<form class="well J_ajaxForm" action="{:U('Index/selectDataSave')}" method="post">
+			<div class="table-actions">
+				<button class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="submit">保存下一步</button>
+			</div>
+			<table class="table table-hover table-bordered table-list" id="menus-table">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选/取消</label></th>
+						<th width="50">ID</th>
+						<th width="200">分类名称</th>
+					</tr>
+				</thead>
+				<tbody>
+					{$categorys}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_y">全选/取消</label></th>
+						<th width="50">ID</th>
+						<th>分类名称</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<input type="hidden" name="info_id" id="info_id" value="{$info_id}">
+				<input name="act" id="act" value="{$act}" type="hidden">
+				<input name="lsttype" id="lsttype" value="{$lsttype}" type="hidden">
+				<input type="hidden" name="submit" id="submit" value="add_class">
+				<button class="btn btn_submit btn-primary btn-small J_ajax_submit_btn" type="submit">保存下一步</button>
+			</div>
+		</form>
+		</if>
+	</div>
+	
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+	<script src="__ROOT__/statics/js/product/select_logo_data_json.js"></script>
+	<script src="__ROOT__/statics/js/product/select_logo_series.js"></script>
+	<script>
+		$(document).ready(function() {
+			Wind.css('treeTable');
+			Wind.use('treeTable', function() {
+				$("#menus-table").treeTable({
+					indent : 20
+				});
+			});
+			//初始车型联动
+			initSelectLogo('logo','series','model','{$post_info.logoid}','{$post_info.seriesid}','{$model_years}','{$lsttype==years ? years : model}');
+
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				$("#searchid").click(function(e){
+					var logoid = $('#logo').val();
+					var seriesid = $('#series').val();
+					var year = $('#model').val();
+					
+					if (logoid == '-1' && seriesid == '-1' && year == '-1') {
+						art.dialog.through({
+							id : 'error',
+							icon : 'error',
+							content : '品牌/车系/年款必须全部选择，无法进行操作！',
+							cancelVal : '关闭',
+							cancel : true
+						});
+						return false;
+					}else{
+						$.ajax({
+							url:'/index.php?g=Products&c=Index&a=desExits',
+							type:'post',
+							data:{"logoid":logoid, "seriesid":seriesid, "years":year},
+							success:function(msg){
+								var content = '';
+								if(msg == 1){
+									$("#form1").submit();
+								}else{
+									content = '该年款车型已经存在，请勿重复添加！';
+									Wind.use("artDialog",function(){
+										art.dialog({
+											title: '提示信息',
+											fixed: true,
+											id:"info_priviews",
+											lock: true,
+											background:"#CCCCCC",
+											opacity:0,
+											content: content,
+											cancelVal: '确定',
+											cancel: true
+										});
+									});
+								}
+							}
+						});
+						
+						return false;
+					}
+				});
+			});
+			//二级分类选中
+			$(".J_check").click(function(){
+				$(this).each(function(){
+					var _classid = $(this).attr('id');
+					var classArr = _classid.split('_');
+					var parentid = classArr[0]+'_'+classArr[1]+'_'+classArr[2];
+					var count = classArr.length;
+					
+					var str = '';
+					$("input[pid='"+parentid+"']").each(function() {
+						if ($(this).attr('checked')) {
+							str = 'yes';
+						}
+					});
+
+					if(count == 3){
+						if($(this).attr('checked')){
+							$("input[pid='"+parentid+"']").each(function() {
+								$(this).attr('checked', true);
+							});
+						}else{
+							$("input[pid='"+parentid+"']").each(function() {
+								$(this).attr('checked', false);
+							});
+						}
+					}else{
+
+						if(!$(this).attr('checked') && !str){
+							$("#"+parentid).attr('checked',false);
+						}else{
+							$("#"+parentid).attr('checked',true);
+						}
+					}
+				});
+			
+			})
+		});
+		//展示图片列表
+		function view_images(info_id,class_id){
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				var $this = $(this);
+				art.dialog.open("__ROOT__/index.php?g=Products&m=Index&a=imgView&class_id="
+								+ class_id + '&info_id=' + info_id, {
+							title : "查看图片",
+							id : "view_images",
+							width : "75%"
+				});
+			});
+		}
+
+		//展示图片列表
+		function addself(info_id, parent_id, class_id){
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				var $this = $(this);
+				art.dialog.open("__ROOT__/index.php?g=Products&m=Index&a=classSelfAdd&class_id="
+								+ class_id + '&info_id=' + info_id + '&parent_id=' + parent_id, {
+							title : "添加自定义分类",
+							id : "add_self",
+							width : "25%",
+							close:function(){
+								window.location.reload();
+							}
+				});
+			});
+		}
+	</script>
+</body>
+</html>

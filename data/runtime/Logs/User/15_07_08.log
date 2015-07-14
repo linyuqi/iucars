@@ -1,0 +1,7 @@
+[ 2015-07-08T10:22:01+08:00 ] 192.168.0.147 /index.php?g=user&m=index&a=is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+NOTIC: [8] Undefined index: url D:\AppServ\www\local_cms_new\application\Common\Controller\AppframeController.class.php 第 43 行.
+

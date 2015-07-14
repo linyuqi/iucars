@@ -1,0 +1,123 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+	        <li class="active"><a href="#A" data-toggle="tab">基本属性</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+
+		          <div class="tab-pane active" id="A">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="140">上级分类:</td>
+									<td><select name="parentid" class="normal_select">
+											<option value="{$self_class.classid}">{$self_class.classname}</option>
+									</select></td>
+								</tr>
+								<tr>
+									<td>分类名称:</td>
+									<td><input type="text" class="input" name="classname" id="classname" value=""><span class="must_red">*</span></td>
+								</tr>
+
+						        <tr>
+						          <td>图片:</td>
+						          <td>
+						          	<div><input type='hidden' name='image' id='class' value=''>
+									<a href='javascript:void(0);' onclick="flashupload('class_images', '附件上传','class',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+									<img src='/statics/images/icon/upload-pic.png' id='class_preview' width='135' height='113' style='cursor:hand' /></a>
+						            <input type="button"  class="btn" onclick="$('#class_preview').attr('src','/statics/images/icon/upload-pic.png');$('#class').val('');return false;" value="取消图片">
+						            </div>
+									</td>
+						        </tr>
+
+								<tr>
+									<td>分类描述:</td>
+									<td><textarea name="description" id="description" rows="5" cols="57"></textarea><span class="must_red">*</span>
+									<input type="hidden" name="info_id" id="info_id" value="{$self_class.infoid}">
+									</td>
+								</tr>
+								<!--<tr>
+									<td>是否启用:</td>
+									<td><select name="disabled">
+											<foreach name="disabled" item="vo">
+									        	<option value="{$key}">{$vo}</option>
+											</foreach>
+									</select></td>-->
+								</tr>
+							</tbody>
+						</table>
+		          </div>
+
+ 				</div>
+
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit" type="button">提交</button>
+		     </div>
+		</form>
+	</div>
+	<script type="text/javascript" src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+	<script>
+		$().ready(function(){
+			$(".btn_submit").click(function(){
+				var parentid = $(".normal_select").val();
+				var classname = $("#classname").val();
+				var imgurl = $("#class_preview").attr('src');
+				var description = $("#description").val();
+				var info_id = $("#info_id").val();
+				
+				//console.log(parentid+'_'+classname+'_'+imgurl+'_'+description);
+				if(imgurl != '/statics/images/icon/upload-pic.png' && classname != '' && parentid > 0 && description != ''){
+					$.ajax({
+						url:'/index.php?g=Products&c=Index&a=classSelfAdd',
+						type:'post',
+						data:{"parentid":parentid, "classname":classname, "imgurl":imgurl, "description":description, "infoid":info_id},
+						success:function(msg){
+							var content = '';
+							
+							if(msg){
+								content = '自定义添加成功！';
+							}else{
+								content = '自定义添加失败！';
+							}
+							
+							Wind.use("artDialog",function(){
+								art.dialog({
+									title: '提示信息',
+									fixed: true,
+									id:"classself_priviews",
+									lock: true,
+									background:"#CCCCCC",
+									opacity:0,
+									content: content,
+									cancelVal: '确定',
+									cancel: function(){
+										top.art.dialog({id : "add_self"}).close();
+									}
+								});
+								
+							});
+						}
+					});
+				}else{
+					art.dialog({
+						title: '提示信息',
+						fixed: true,
+						id:"cc_priviews",
+						lock: true,
+						background:"#CCCCCC",
+						opacity:0,
+						content: "请填写必填项！",
+						cancelVal: '确定',
+						cancel: true
+					});
+				}
+			})
+		})
+	</script>
+</body>
+</html>

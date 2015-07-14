@@ -1,0 +1,126 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap jj">
+		<div class="common-form">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">序号:</label>
+						<div class="controls">
+							<input type="text" class="input" name="info[listorder]" id="listorder" value="{$metaInfo['listorder']}">
+							<span class="must_red">*</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">锚点名称:</label>
+						<div class="controls">
+							<input type="text" class="input" name="info[metaname]" id="metaname" value="{$metaInfo['metaname']}">
+							<span class="must_red">*</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">X轴:</label>
+						<div class="controls">
+							<input type="text" class="input" name="info[posx]" id="posx" value="{$metaInfo['posx']}">
+							<span class="must_red">*</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">Y轴:</label>
+						<div class="controls">
+							<input type="text" class="input" name="info[posy]" id="posy" value="{$metaInfo['posy']}">
+							<span class="must_red">*</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">说明:</label>
+						<div class="controls">
+							<textarea rows="2" cols="10" id="content" name="content">{$metaInfo['description']}</textarea>
+							<input type="hidden" name="photo_id" id="photo_id" value="{$photo_id}">
+							<input type="hidden" name="meta_id" id="meta_id" value="{$meta_id}">
+						</div>
+					</div>
+					
+				</fieldset>
+				<div class="form-actions">
+					<button type="button" class="J_ajax_submit_btn">{$photo_id?'添加':'修改'}</button>
+				</div>
+		</div>
+	</div>
+	<script src="__ROOT__/statics/js/common.js"></script>
+	<script>
+	$().ready(function(){
+		$(".J_ajax_submit_btn").click(function(){
+			var listorder = $('#listorder').val();
+			var metaname = $('#metaname').val();
+			var posx = $('#posx').val();
+			var posy = $('#posy').val();
+			var photo_id = $('#photo_id').val();
+			var meta_id = $('#meta_id').val();
+			var act = (meta_id) ? 'edit' : 'add';
+
+			var content = $('#content').val();
+			if(listorder && metaname && posx && posy && content){
+				$.ajax({
+					url:'/index.php?g=Products&c=Index&a=metaSave',
+					type:'post',
+					data:{"act":act, "photo_id":photo_id, "meta_id":meta_id, "listorder":listorder,"metaname":metaname, "posx":posx, "posy":posy, "content":content},
+					success:function(msg){
+						var content = '';
+						var ass = msg.split('_');
+						if(ass[0] == 'add'){
+							if(ass[1] == 1){
+								content = '锚点添加成功！';
+							}else{
+								content = '锚点添加失败！';
+							}
+						}else{
+							if(ass[1] == 1){
+								content = '锚点修改成功！';
+							}else{
+								content = '锚点修改失败！';
+							}
+						}
+
+						Wind.use("artDialog",function(){
+							art.dialog({
+								title: '提示信息',
+								fixed: true,
+								id:"meta_priviews",
+								lock: true,
+								background:"#CCCCCC",
+								opacity:0,
+								content: content,
+								cancelVal: '确定',
+								cancel: function(){
+									parent.art.dialog({id : "meta_opt"}).close();
+								}
+							});
+							
+						});
+					}
+				});
+			}else{
+				Wind.use("artDialog",function(){
+					art.dialog({
+						title: '提示信息',
+						fixed: true,
+						id:"image_priviews",
+						lock: true,
+						background:"#CCCCCC",
+						opacity:0,
+						content: "请填写必填项！",
+						cancelVal: '确定',
+						cancel: true
+					});
+				});
+			
+			
+			}
+		
+		})
+	
+	})
+	
+	</script>
+</body>
+</html>
