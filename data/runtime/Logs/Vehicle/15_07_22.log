@@ -1,0 +1,46 @@
+[ 2015-07-22T12:14:58+08:00 ] 127.0.0.1 /index.php?g=Vehicle&m=Index&a=desList&menuid=166
+ERR: Think\Model:getVehicleCount方法不存在！
+
+[ 2015-07-22T12:18:01+08:00 ] 127.0.0.1 /index.php?g=Vehicle&m=Index&a=veAdd
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_vehicle` [ RunTime:0.0020s ]
+SQL: INSERT INTO `iuc_vehicle` (`info_id`,`author`,`avatar`,`content`,`addtime`,`stat`,`edtime`,`adduser`) VALUES ('48','asdfasdfdsaf','/data/upload/55af1977454f1.jpg','asdfasdf','1437538681','1','1437538681','admin') [ RunTime:0.0420s ]
+NOTIC: [8] Use of undefined constant msg - assumed 'msg' D:\wamp\www\iucars\application\Vehicle\Controller\IndexController.class.php 第 93 行.
+
+[ 2015-07-22T12:18:18+08:00 ] 127.0.0.1 /index.php?g=Vehicle&m=Index&a=veDelete&id=22
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_vehicle` [ RunTime:0.0020s ]
+SQL: DELETE FROM `iuc_vehicle` WHERE `id` = 22 [ RunTime:0.0260s ]
+
+[ 2015-07-22T12:53:28+08:00 ] 127.0.0.1 /index.php?g=Vehicle&m=Index&a=veEdit
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_vehicle` [ RunTime:0.0020s ]
+SQL: UPDATE `iuc_vehicle` SET `author`='asdfasdfasdfasdf',`avatar`='/data/upload/55af1e94a9617.jpg',`content`='asdfasdfasdfasdfasdfasdfasdfasdf asdf asdf',`stat`='0',`edtime`='1437540807' WHERE `id` = 24 [ RunTime:0.0430s ]
+NOTIC: [8] Use of undefined constant msg - assumed 'msg' D:\wamp\www\iucars\application\Vehicle\Controller\IndexController.class.php 第 118 行.
+
+[ 2015-07-22T12:53:34+08:00 ] 127.0.0.1 /index.php?g=Vehicle&m=Index&a=veEdit
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_vehicle` [ RunTime:0.0050s ]
+SQL: UPDATE `iuc_vehicle` SET `author`='asdfasdfasdfasdf',`avatar`='/data/upload/55af1e94a9617.jpg',`content`='asdfasdfasdfasdfasdfasdfasdfasdf asdf asdf',`stat`='1',`edtime`='1437540814' WHERE `id` = 24 [ RunTime:0.0290s ]
+NOTIC: [8] Use of undefined constant msg - assumed 'msg' D:\wamp\www\iucars\application\Vehicle\Controller\IndexController.class.php 第 118 行.
+
