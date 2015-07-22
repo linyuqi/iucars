@@ -8,7 +8,7 @@ return array(
     'DB_HOST' => '127.0.0.1',
     'DB_NAME' => 'iucars',
     'DB_USER' => 'root',
-    'DB_PWD' => '123456',
+    'DB_PWD' => '',
     'DB_PORT' => '3306',
     'DB_PREFIX' => 'iuc_',
     //密钥
