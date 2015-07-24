@@ -2,28 +2,25 @@
 <body class="J_scroll_fixed">
 	<div class="wrap J_check_wrap">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="{:U('Index/desList')}">所有震后感</a></li>
-			<li><a href="{:U('Index/desAdd',array('lsttype'=>'years'))}" target="_self"></a></li>
+			<li><a href="{:U('Index/desList')}">所有震后感</a></li>
+			<li class="active"><a href="{:U('Index/veList',array('info_id'=>$info_id))}" target="_self">车型震后感(ID:{$info_id})</a></li>
 		</ul>
 		<form class="well form-search" method="post" action="{:U('Index/desList')}">
 			<div class="search_type cc mb10">
 				<div class="mb10">
 					<span class="mr20">
-					品牌：<select id="logo" name="search[logo]" onchange="selectLogoOnChange('logo','series','model')" style="width:200px;">
-								<option value="--请选择品牌--">--请选择品牌--</option>
+					搜索类型：<select id="logo" name="searchtype" style="width:200px;">
+								<option value="--请选择品牌--">--请选择搜索类型--</option>
+								<option value="1">评论者</option>
+								<option value="2">评论内容</option>
 							</select>
-							车系：<select id="series" name="search[series]" onchange="selectSeriesOnChange('series','model')">
-								<option value="--请选择车系--">--请选择车系--</option>
-							</select>
-							<div style="display:none">年款：<select id="model" name="search[model]" class="easyui-combobox">
-								<option value="--请选择车型--">--请选择车型--</option>
-							</select></div>&nbsp; &nbsp;
+						<input type="text" name="searchtxt" value="">
 						<input type="submit" class="btn btn-primary" value="搜索" />
 					</span>
 				</div>
 			</div>
 		</form>
-		<form class="J_ajaxForm" action="{:U('Index/listdesorders')}" method="post">
+		<form class="J_ajaxForm" action="{:U('Index/veSearch')}" method="post">
 			
 			<table class="table table-hover table-bordered table-list">
 				<thead>
@@ -81,13 +78,6 @@
 		setInterval(function() {
 			refersh_window();
 		}, 2000);
-		
-		$(function() {
-			//初始车型联动
-			initSelectLogo('logo','series','model','{$post_info.logo}','{$post_info.series}','{$post_info.model}');
-			setCookie("refersh_time", 0);
-			
-		});
 	</script>
 </body>
 </html>

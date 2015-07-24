@@ -39,6 +39,7 @@
 						<th width="80">最后添加时间</th>
 						<th width="80">最后添加</th>
 						<th width="80">评论数(条)</th>
+						<th width="80">车震评分</th>
 						<th width="50">状态</th>
 						<th width="60">操作</th>
 					</tr>
@@ -54,10 +55,12 @@
 					<td>{$vo.addtime}</td>
 					<td>{$vo.adduser}</td>
 					<td>{$vo.sum}</td>
+					<td>{$vo.sumpoint}</td>
 					<td>显示</td>
 					<td>
 						<a href="{:U('Index/veList',array('lsttype'=>$vo['modelid']>0 ? 'model' : 'years', 'info_id'=>$vo['id'], 'step'=>1, 'act'=>'edit'))}">查看</a> | 
-						<a href="{:U('Index/veAdd',array('info_id'=>$vo['id']))}" class="">添加</a></td>
+						<a href="{:U('Index/veAdd',array('info_id'=>$vo['id']))}" class="">添加</a> |
+						<a href="{:U('Index/vegradeList',array('info_id'=>$vo['id']))}" class="">车震评分</a></td>
 				</tr>
 				</foreach>
 				

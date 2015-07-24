@@ -1,0 +1,320 @@
+<admintpl file="header" />
+<style>
+td select{
+	width:130px;
+} 
+td checkbox{
+	width:50px;
+	height:50px;
+}
+.feature{
+	width:600px;
+}
+.feature tr{
+	height:30px;
+}
+.txt{
+	width:50px;
+}
+.notice{
+	font-size:12px;
+	color:gray;
+}
+</style>
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+	        <li><a href="{:U('Index/desList')}">所有震后感</a></li>
+	        <li class="active"><a href="#">车震指数</a></li>
+	    </ul>
+		<form class="form-horizontal" name="myform" id="myform" action="{:U('Index/vegradeUpdate')}" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+
+		          <div class="tab-pane active" id="A">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr><td colspan="2"><h4>基本指数(说明书ID:{$info.id})</h4></td></tr>
+								<tr>
+									<td width="140">品牌:</td>
+									<td>
+										<php>$checked1=$list['brand_type']==1?"checked":""</php>
+										<input type="radio" name="brandpoint" {$checked1} data="1" value="3">自主品牌&nbsp;&nbsp;
+										<php>$checked2=$list['brand_type']==2?"checked":""</php>
+										<input type="radio" name="brandpoint" {$checked2} data="2" value="6">普通合资&nbsp;&nbsp;
+										<php>$checked3=$list['brand_type']==3?"checked":""</php>
+										<input type="radio" name="brandpoint" {$checked3} data="3" value="9">国产豪华&nbsp;&nbsp;
+										<php>$checked4=$list['brand_type']==4?"checked":""</php>
+										<input type="radio" name="brandpoint" {$checked4} data="4" value="12">进口豪华&nbsp;&nbsp;
+										<php>$checked5=$list['brand_type']==5?"checked":""</php>
+										<input type="radio" name="brandpoint" {$checked5} data="5" value="15">奢华品牌&nbsp;&nbsp;
+										<input type="text" name="brandpoints" class="txt brandpoints" disabled  value="{$list.brand_point}">
+									</td>
+								</tr>
+								<tr>
+									<td width="140">功能:</td>
+									<td>
+										<table class="feature">
+											<tr>
+												<php>
+													for($i=1;$i<=15;$i++)
+													{
+														if(in_array($i,$list['feature_type']))
+														{
+															$checked[$i] = 'checked'; 
+														}
+														else
+														{
+															$checked[$i] = '';
+														}
+													}
+												</php>
+												<td><input type="checkbox" {$checked[1]} class="featurepoint" name="featurepoint[]" value="1">自动空调</TD>
+												<td><input type="checkbox" {$checked[2]} class="featurepoint" name="featurepoint[]" value="2">DVD影音</TD>
+												<td><input type="checkbox" {$checked[3]} class="featurepoint" name="featurepoint[]" value="3">后排空调</TD>
+												<td><input type="checkbox" {$checked[4]} class="featurepoint" name="featurepoint[]" value="4">氛围灯</TD>
+											</tr>
+											<tr>
+												<td><input type="checkbox" {$checked[5]} class="featurepoint" name="featurepoint[]" value="5">座椅多项调节</TD>
+												<td><input type="checkbox" {$checked[6]} class="featurepoint" name="featurepoint[]" value="6">高端音响</TD>
+												<td><input type="checkbox" {$checked[7]} class="featurepoint" name="featurepoint[]" value="7">座椅加热</TD>
+												<td><input type="checkbox" {$checked[8]} class="featurepoint" name="featurepoint[]" value="8">记忆座椅</TD>
+											</tr>
+											<tr>
+												<td><input type="checkbox" {$checked[9]} class="featurepoint" name="featurepoint[]" value="9">老板键</TD>
+												<td><input type="checkbox" {$checked[10]} class="featurepoint" name="featurepoint[]" value="10">原厂私密玻璃</TD>
+												<td><input type="checkbox" {$checked[11]} class="featurepoint" name="featurepoint[]" value="11">天窗自动空调</TD>
+												<td><input type="checkbox" {$checked[12]} class="featurepoint" name="featurepoint[]" value="12">车载冰箱</TD>
+											</tr>
+											<tr>
+												<td><input type="checkbox" {$checked[13]} class="featurepoint" name="featurepoint[]" value="13">座椅通风</TD>
+												<td><input type="checkbox" {$checked[14]} class="featurepoint" name="featurepoint[]" value="14">遮阳帘</TD>
+												<td><input type="checkbox" {$checked[15]} class="featurepoint" name="featurepoint[]" value="15">后排整体放平</TD>
+												<td>评分：<input type="text" name="featurepoints" class="txt featurepoints" disabled value="{$list.feature_point}"></TD>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr><td colspan="2"><h4>车震舒适度</h4></td></tr>
+								<tr width="140">
+									<td>第一排:</td>
+									<td>
+										<select name="space1" id="space1">
+											<foreach name="space1" item="vo">
+												<php>$selected=$list['space1_point']==$key?"selected":""</php>
+									        	<option value="{$key}" {$selected}>{$vo}</option>
+											</foreach>
+										</select>
+									<input type="hidden" class="space1point" name="space1point" value="{$list.space1_point}">
+									<p><span class="notice">注：请选择1~10分的分值</span></p>
+									</td>
+								</tr>
+								<tr width="140">
+									<td>第二排:</td>
+									<td>
+										<select name="space2" id="space2">
+											<foreach name="space1" item="vo">
+												<php>$selected=$list['space2_point']==$key?"selected":""</php>
+									        	<option value="{$key}" {$selected}>{$vo}</option>
+											</foreach>
+										</select>
+										<input type="hidden" class="space2point" name="space2point" value="{$list.space2_point}">
+										<p><span class="notice">注：请选择1~10分的分值</span></p>
+									</td>
+								</tr>
+								<tr width="140">
+									<td>后备箱:</td>
+									<td><input type="text" name="space3" class="txt space" value="{$list.space3_name}">(L)&nbsp;
+									评分：<input type="text" name="space3point" class="txt space3point"  value="{$list.space3_point}">
+									<p><span class="notice">注：请输入1~10之间分值</span></p>
+									</td>
+								</tr>
+								<tr width="140">
+									<td>储物空间:</td>
+									<td><select name="space4" id="space4">
+											<foreach name="space4" item="vo">
+												<php>$selected=$list['space4_point']==$key?"selected":""</php>
+									        	<option value="{$key}" {$selected}>{$vo}</option>
+											</foreach>
+										</select>
+										评分：<input type="text" name="space4point" class="txt space4point" value="{$list.space4_point}">
+										<p><span class="notice">注：超过20处可在后面文本框输入大于20的数</span></p>
+									</td>
+								</tr>
+								<tr>
+									<td>乘坐空间:</td>
+									<td>
+										长：<input type="text" name="space5long" class="txt space"  value="{$list.space5_long}">&nbsp;
+										宽：<input type="text" name="space5width" class="txt space"  value="{$list.space5_width}">&nbsp;
+										高：<input type="text" name="space5height" class="txt space"  value="{$list.space5_height}">&nbsp;
+										评分：<input type="text" name="space5point" class="txt space5point"  value="{$list.space5_point}">
+										<p><span class="notice">注：长、宽、高的单位为毫米，评分总分为20分，长7分、宽6分、高7分，请在该范围内打分并填写总分</span></p>
+									</td>
+							  </tr>
+							  <tr>
+									<td><h4>总评分：</h4></td>
+									<td>
+										<input type="text" name="sumpoint" class="maingrade" style="color:red;font-size:24px;height:30px;" disabled value="{$list.sumpoint}">
+										<input type="hidden" name="sumpoint" class="sumpoint" value="{$list.sumpoint}">
+									</td>
+							  </tr>
+							</tbody>
+							<input type="hidden" class="id" name="id" value="{$list.id}">
+							<input type="hidden" class="info_id" name="info_id" value="{$info.id}">
+							<input type="hidden" class="logo_id" name="logo_id" value="{$info.logoid}">
+							<input type="hidden" class="model_id" name="model_id" value="{$info.modelid}">
+							<input type="hidden" class="series_id" name="series_id" value="{$info.seriesid}">
+						</table>
+		          </div>
+
+ 				</div>
+
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit" type="submit">提交</button>
+		     </div>
+		</form>
+	</div>
+	<script type="text/javascript" src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+	<script>
+		$().ready(function(){
+			//品牌打分
+			var sumpoint = function(){
+				//品牌得分
+				var brandpoint = $(".brandpoints").val() == '' ? 0 : $(".brandpoints").val();
+				//功能得分
+				var featurepoint = $(".featurepoints").val() == '' ? 0 : $(".featurepoints").val();
+				//第一排
+				var space1 = $(".space1point").val() == '' ? 0 : $(".space1point").val();
+				//第二排
+				var space2 = $(".space2point").val() == '' ? 0 : $(".space2point").val();
+				//后备箱
+				var space3 = $(".space3point").val() == '' ? 0 : $(".space3point").val();
+				//储物空间
+				var space4 = $(".space4point").val() == '' ? 0 : $(".space4point").val();
+				//乘坐空间
+				var space5 = $(".space5point").val() == '' ? 0 : $(".space5point").val();
+				var points = parseInt(brandpoint) + parseInt(featurepoint) + parseInt(space1) + parseInt(space2) + parseInt(space3) + parseInt(space4) +parseInt(space5);
+				$(".maingrade").val(points);		
+				$(".sumpoint").val(points);
+			}
+			
+			$('input[name=brandpoint]').click(function(){
+				var point = $(this).val();
+				$(".brandpoints").val(point);
+				sumpoint();
+			});
+			
+			//功能分
+			$('input[type=checkbox]').click(function(){
+				var count = $("input[type=checkbox]:checked").length;
+				$(".featurepoints").val(count);
+				sumpoint();
+			});
+			//第一排
+			$("#space1").change(function(){
+				var space1point = $(this).val();
+				$(".space1point").val(space1point);
+				sumpoint();
+			});
+			//第二排
+			$("#space2").change(function(){
+				var space1point = $(this).val();
+				$(".space2point").val(space1point);
+				sumpoint();
+			});	
+			//后备箱
+			$(".space3point").keyup(function(){
+				var space3point = $(this).val();
+				if(space3point > 10)
+				{
+					$(".space3point").val(10);
+				}
+				sumpoint();
+			});
+			
+			//储物空间
+			$("#space4").change(function(){
+				var space4point = $(this).val();
+				$('.space4point').val(space4point);
+				sumpoint();
+			});
+			$(".space4point").keyup(function(){
+				var space4point = $(this).val();
+				sumpoint();
+			});
+			
+			//乘坐空间
+			$(".space5point").keyup(function(){
+				var space5point = $(this).val();
+				if(space5point > 20)
+				{
+					$(".space5point").val(20);
+				}
+				sumpoint();
+			});
+			
+			//提交
+			/*$(".btn_submit").click(function(){
+				var model_id = $(".model_id").val();
+				var info_id = $(".info_id").val();
+				var series_id = $(".series_id").val();
+				var brandtype = $("input[name=brandpoint]:checked").attr('data');
+				var featuretype = $("input[name=featuretype]").val();
+				alert(featuretype);return;
+				var content = $("#content").val();
+				var stat = $("#stat").val();
+				var info_id = $("#info_id").val();
+				
+				//console.log(parentid+'_'+classname+'_'+imgurl+'_'+description);
+				if(avatar != '/statics/images/icon/upload-pic.png' && author != '' && content != ''){
+					$.ajax({
+						url:'/index.php?g=Vehicle&m=Index&a=vegradeUpdate',
+						type:'post',
+						data:{"author":author, "avatar":avatar,"content":content, "info_id":info_id,"stat":stat},
+						success:function(msg){
+							var content = '';
+							
+							if(msg){
+								content = '自定义添加成功！';
+							}else{
+								content = '自定义添加失败！';
+							}
+							
+							Wind.use("artDialog",function(){
+								art.dialog({
+									title: '提示信息',
+									fixed: true,
+									id:"classself_priviews",
+									lock: true,
+									background:"#CCCCCC",
+									opacity:0,
+									content: content,
+									cancelVal: '确定',
+									cancel: function(){
+										art.dialog({id : "add_self"}).close();
+									}
+								});
+								
+							});
+						}
+					});
+				}else{
+					art.dialog({
+						title: '提示信息',
+						fixed: true,
+						id:"cc_priviews",
+						lock: true,
+						background:"#CCCCCC",
+						opacity:0,
+						content: "请填写必填项！",
+						cancelVal: '确定',
+						cancel: true
+					});
+				}
+			})*/
+		})
+	</script>
+</body>
+</html>
