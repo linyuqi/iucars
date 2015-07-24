@@ -1,0 +1,189 @@
+[ 2015-07-22T12:17:51+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18008064065824728459_1437538671804&_=1437538671820
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:17:51+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18008064065824728459_1437538671805&_=1437538671820
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0030s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:18:08+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery180003547607967630029_1437538688094&_=1437538688111
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0030s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:18:08+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery180003547607967630029_1437538688095&_=1437538688112
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:18:15+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18009699272068683058_1437538695848&_=1437538695867
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:18:15+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18009699272068683058_1437538695849&_=1437538695868
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:18:18+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery1800534323644824326_1437538698685&_=1437538698704
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:18:18+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery1800534323644824326_1437538698686&_=1437538698705
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:14+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18008992450044024736_1437540794166&_=1437540794188
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:53:14+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18008992450044024736_1437540794167&_=1437540794189
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:53:17+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18008313559691887349_1437540797475&_=1437540797501
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:17+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18008313559691887349_1437540797476&_=1437540797502
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0030s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:21+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery180034621570305898786_1437540801706&_=1437540801735
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0030s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:21+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery180034621570305898786_1437540801705&_=1437540801734
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:31+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18002261621856596321_1437540811220&_=1437540811239
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0030s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:31+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18002261621856596321_1437540811221&_=1437540811240
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0000s ]
+
+[ 2015-07-22T12:53:38+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getSeriesList&id=&lsttype=logo&jsoncallback=jQuery18001960673297289759_1437540818081&_=1437540818105
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_series` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `iuc_brand` [ RunTime:0.0020s ]
+SQL: SELECT name,brand_id,logo_id FROM `iuc_brand` WHERE `logo_id` = 0 AND `isshow` = 'yes' ORDER BY `id` DESC  [ RunTime:0.0010s ]
+
+[ 2015-07-22T12:53:38+08:00 ] 127.0.0.1 /index.php?g=Products&c=Index&a=getModelList&id=&lsttype=undefined&jsoncallback=jQuery18001960673297289759_1437540818082&_=1437540818106
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `iuc_users` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `iuc_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `iuc_model` [ RunTime:0.0020s ]
+SQL: SELECT `model_id`,`model_year`,`m_name` FROM `iuc_model` WHERE `bseries_id` = 0 AND `isshow` = 'yes' ORDER BY `model_year` DESC  [ RunTime:0.0000s ]
+

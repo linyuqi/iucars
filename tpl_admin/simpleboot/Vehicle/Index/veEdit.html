@@ -1,0 +1,123 @@
+<admintpl file="header" />
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+	        <li><a href="{:U('Index/desList')}">所有震后感</a></li>
+	        <li class="active"><a href="#">编辑震后感</a></li>
+	    </ul>
+		<form class="form-horizontal J_ajaxForm" name="myform" id="myform" method="post">
+			<div class="tabbable">
+		        <div class="tab-content">
+
+		          <div class="tab-pane active" id="A">
+		          		<table cellpadding="2" cellspacing="2" width="100%">
+							<tbody>
+								<tr>
+									<td width="140">说明书ID:</td>
+									<td><input type="hidden" class="input" name="info_id" id="info_id" value="{$list.info_id}">{$list.info_id}</td>
+								</tr>
+								<tr width="140">
+									<td>评论者:</td>
+									<td><input type="text" class="input" name="author" id="author" value="{$list.author}"><span class="must_red">*</span></td>
+								</tr>
+
+						        <tr>
+						          <td>评论者头像:</td>
+						          <td>
+						          	<div><input type='hidden' name='avatar' id='class' value='{$list.avatar}'>
+									<a href='javascript:void(0);' onclick="flashupload('class_images', '附件上传','class',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+									<img src='{$list.avatar}' id='class_preview' width='135' height='113' style='cursor:hand' /></a>
+						            <input type="button"  class="btn" onclick="$('#class_preview').attr('src','/statics/images/icon/upload-pic.png');$('#class').val('');return false;" value="取消图片">
+						            </div>
+									</td>
+						        </tr>
+								<tr>
+									<td>评论内容:</td>
+									<td><textarea name="content" id="content" rows="5" cols="57">{$list.content}</textarea><span class="must_red">*</span>
+									</td>
+								</tr>
+								<input type="hidden" id="vid" name="vid" value="{$list.id}">
+								<tr>
+									<td>是否启用:</td>
+									<td><select name="stat" id="stat">
+											<foreach name="stat" item="vo">
+												<php>$selected=$list['stat']==$key?"selected":""</php>
+									        	<option value="{$key}" {$selected}>{$vo}</option>
+											</foreach>
+									</select></td>
+								</tr>
+							</tbody>
+						</table>
+		          </div>
+
+ 				</div>
+
+		    </div>
+		     <div class="form-actions">
+		           <button class="btn btn-primary btn_submit" type="button">提交</button>
+		     </div>
+		</form>
+	</div>
+	<script type="text/javascript" src="__ROOT__/statics/js/common.js"></script>
+	<script type="text/javascript" src="__ROOT__/statics/js/content_addtop.js"></script>
+	<script>
+		$().ready(function(){
+			$(".btn_submit").click(function(){
+				var author = $("#author").val();
+				var avatar = $("#class_preview").attr('src');
+				var content = $("#content").val();
+				var info_id = $("#info_id").val();
+				var stat = $("#stat").val();
+				var vid = $("#vid").val();
+				//console.log(parentid+'_'+classname+'_'+imgurl+'_'+description);
+				if(avatar != '/statics/images/icon/upload-pic.png' && author != '' && content != ''){
+					$.ajax({
+						url:'/index.php?g=Vehicle&m=Index&a=veEdit',
+						type:'post',
+						data:{"author":author, "avatar":avatar,"content":content, "info_id":info_id,"vid":vid,'stat':stat},
+						success:function(msg){
+							var content = '';
+							
+							if(msg){
+								content = '震后感添加成功！';
+							}else{
+								content = '震后感添加失败！';
+							}
+							
+							Wind.use("artDialog",function(){
+								art.dialog({
+									title: '提示信息',
+									fixed: true,
+									id:"classself_priviews",
+									lock: true,
+									background:"#CCCCCC",
+									opacity:0,
+									content: content,
+									cancelVal: '确定',
+									cancel: function(){
+										$("input").val();
+										art.dialog({id : "add_self"}).close();
+									}
+								});
+								
+							});
+						}
+					});
+				}else{
+					art.dialog({
+						title: '提示信息',
+						fixed: true,
+						id:"cc_priviews",
+						lock: true,
+						background:"#CCCCCC",
+						opacity:0,
+						content: "请填写必填项！",
+						cancelVal: '确定',
+						cancel: true
+					});
+				}
+			})
+		})
+	</script>
+</body>
+</html>
