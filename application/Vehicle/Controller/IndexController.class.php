@@ -182,8 +182,8 @@ class IndexController extends AdminbaseController {
 			$grade['feature_type'] = explode(',',$grade['feature_type']);
 			$list = $grade;
 		}
-		$space1 = array('选择座位评分',1,2,3,4,5,6,7,8,9,10);
-		$space4 = array('选择储藏处数',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
+		$space1 = array_merge(array('选择座位评分'),range(1,10));
+		$space4 = array_merge(array('选择储藏处数'),range(1,20));
 		$this->assign('info',$info);
 		$this->assign('space1',$space1);
 		$this->assign('space4',$space4);
